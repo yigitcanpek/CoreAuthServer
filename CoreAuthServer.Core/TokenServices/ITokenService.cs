@@ -11,7 +11,7 @@ namespace CoreAuthServer.Core.TokenServices
 {
     public interface ITokenService
     {
-        TokenDto CreateToken(UserApp);
+        TokenDto CreateToken(UserApp userApp);
         ClientTokenDto CreateTokenByClient(Client client);
     }
 }

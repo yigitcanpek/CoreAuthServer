@@ -17,10 +17,10 @@ namespace CoreAuthServer.Core.Services
 
         Task<Response<IEnumerable<TDto>>>Where(Expression<Func<TEntity, bool>> predicate);
 
-        Task<Response<TDto>> AddAsync(TEntity entity);
+        Task<Response<TDto>> AddAsync(TDto entity);
 
-        Task<Response<NoDataDto>> Remove(TEntity entity);
+        Task<Response<NoDataDto>> Remove(int id);
 
-        Task<Response<NoDataDto>> Update(TEntity entity);
+        Task<Response<NoDataDto>> Update(TDto entity,int id);
     }
 }
