@@ -1,3 +1,4 @@
+using CoreAuthServer.Core.TokenConfiguration;
 using CoreSharedLibary.Configurations;
 using Microsoft.Extensions.Options;
 
@@ -11,6 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddOptions();
 builder.Services.Configure<CustomTokenOption>(builder.Configuration.GetSection("TokenOption"));
+builder.Services.Configure<Client>(builder.Configuration.GetSection("Clients"));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CoreAuthServer.Core\CoreAuthServer.Core.csproj" />
     <ProjectReference Include="..\CoreSharedLibary\CoreSharedLibary.csproj" />
   </ItemGroup>
 
