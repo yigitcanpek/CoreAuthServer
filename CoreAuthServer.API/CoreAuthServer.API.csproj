@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\CoreAuthServer.Core\CoreAuthServer.Core.csproj" />
     <ProjectReference Include="..\CoreAuthServer.Service\CoreAuthServer.Service.csproj" />
     <ProjectReference Include="..\CoreSharedLibary\CoreSharedLibary.csproj" />
