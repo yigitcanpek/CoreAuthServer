@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CoreAuthServer.Service.Services
 {
-    internal class SignService
+    public class SignService
     {
         public static SecurityKey GetSymmetricSecurityKey(string securityKey)
         {

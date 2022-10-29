@@ -14,8 +14,8 @@ namespace CoreAuthServer.Core.Services
 
         Task<Response<TokenDto>> CreateByRefreshToken(string refreshToken);
 
-        Task<Response<TokenDto>> RevokeRefreshToken(string refreshToken);
+        Task<Response<NoDataDto>> RevokeRefreshToken(string refreshToken);
 
-        Task<Response<ClientTokenDto>> CreateTokenByClient(ClientLoginDto clientLoginDto);
+        Response<ClientTokenDto> CreateTokenByClient(ClientLoginDto clientLoginDto);
     }
 }
