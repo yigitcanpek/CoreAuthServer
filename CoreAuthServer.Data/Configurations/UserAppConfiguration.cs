@@ -14,6 +14,7 @@ namespace CoreAuthServer.Data.Configurations
         public void Configure(EntityTypeBuilder<UserApp> builder)
         {
             builder.Property(x => x.City).HasMaxLength(200);
+            builder.Property(x => x.City).IsRequired(false);
         }
     }
 }

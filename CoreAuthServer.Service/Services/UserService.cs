@@ -23,17 +23,17 @@ namespace CoreAuthServer.Service.Services
         public async Task<Response<UserAppDto>> CreateUserAsync(CreateUserDto createUserDto)
         {
             UserApp user = new UserApp { Email = createUserDto.Email, UserName = createUserDto.UserName };
-
+           
             IdentityResult result = await _userManager.CreateAsync(user, createUserDto.Password);
 
             if (!result.Succeeded)
             {
-                IEnumerable<String> errors = result.Errors.Select(x => x.Description);
-                return Response<UserAppDto>.Fail(new ErrorDto(errors.ToString(), true), 400);
+                List<string> errors = result.Errors.Select(x => x.Description).ToList();
+                return Response<UserAppDto>.Fail(new ErrorDto(errors, true), 400);
             }
             return Response<UserAppDto>.Success(ObjectMapper.Mapper.Map<UserAppDto>(user), 200);
         }
-
+        
         public async Task<Response<UserAppDto>> GetUserByNameAsync(string userName)
         {
             UserApp user = await _userManager.FindByNameAsync(userName);

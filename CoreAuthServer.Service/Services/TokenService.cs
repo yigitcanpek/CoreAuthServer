@@ -4,6 +4,7 @@ using CoreAuthServer.Core.TokenConfiguration;
 using CoreAuthServer.Core.TokenServices;
 using CoreSharedLibary.Configurations;
 using CoreSharedLibary.DTO_s;
+using CoreSharedLibary.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -79,7 +80,7 @@ namespace CoreAuthServer.Service.Services
                 );
             JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
 
-            String token = handler.WriteToken(jwtSecurityToken);
+            string token = handler.WriteToken(jwtSecurityToken);
             TokenDto tokenDto = new TokenDto
             {
                 AccessToken = token,
@@ -109,7 +110,7 @@ namespace CoreAuthServer.Service.Services
                 );
             JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
 
-            String token = handler.WriteToken(jwtSecurityToken);
+            string token = handler.WriteToken(jwtSecurityToken);
             ClientTokenDto tokenDto = new ClientTokenDto
             {
                 AccessToken = token,

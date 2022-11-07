@@ -12,9 +12,9 @@ namespace CoreAuthServer.Core.TokenConfiguration
 
         public string Secret { get; set; }
 
-
         //www.myapi.com,www.mayapii.com
-        public List<String> Audiences { get; set; }
+        public List<string> Audiences { get; set; }
+
 
     }
 }

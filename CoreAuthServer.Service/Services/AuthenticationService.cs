@@ -58,10 +58,12 @@ namespace CoreAuthServer.Service.Services
             return Response<TokenDto>.Success(tokenDto, 200);
         }
 
-        public async Task<Response<TokenDto>> CreateToken(SignDto signDto)
+   
+
+        public async Task<Response<TokenDto>> CreateTokenAsync(SignDto signDto)
         {
             if (signDto == null) throw new ArgumentNullException(nameof(signDto));
-            var user = await _userManager.FindByEmailAsync(signDto.Email);
+            UserApp user = await _userManager.FindByEmailAsync(signDto.Email);
 
             if (user == null) return Response<TokenDto>.Fail("Email or Password is wrong", 400, true);
 

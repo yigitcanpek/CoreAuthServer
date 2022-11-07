@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CoreAuthServer.Core.Entities
 {
-    public class UserApp:IdentityUser
+    public class UserApp : IdentityUser
     {
         public string City { get; set; }
 

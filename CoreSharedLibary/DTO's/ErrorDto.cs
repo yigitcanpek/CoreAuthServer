@@ -8,13 +8,13 @@ namespace CoreSharedLibary.DTO_s
 {
     public class ErrorDto
     {
-        public List<String> Errors { get; private set; }
+        public List<string> Errors { get;  set; }
 
-        public bool IsShow { get; set; }
+        public bool IsShow { get; private set; }
 
         public ErrorDto()
         {
-            Errors = new List<String>();
+            Errors = new List<string>();
         }
 
         public ErrorDto(string error,bool isShow)
@@ -25,7 +25,7 @@ namespace CoreSharedLibary.DTO_s
 
         public ErrorDto(List<string> errors,bool isShow)
         {
-            Errors = Errors;
+            Errors = errors;
             IsShow = isShow;
         }
     }

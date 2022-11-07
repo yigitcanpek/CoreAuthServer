@@ -10,7 +10,7 @@ namespace CoreAuthServer.Core.Services
 {
     public interface IAuthenticationService
     {
-        Task<Response<TokenDto>> CreateToken(SignDto signDto);
+        Task<Response<TokenDto>> CreateTokenAsync(SignDto signDto);
 
         Task<Response<TokenDto>> CreateByRefreshToken(string refreshToken);
 

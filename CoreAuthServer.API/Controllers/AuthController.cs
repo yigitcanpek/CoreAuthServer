@@ -20,7 +20,7 @@ namespace CoreAuthServer.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateToken(SignDto sign)
         {
-            Response<TokenDto> result = await _authenticationService.CreateToken(sign);
+            Response<TokenDto> result = await _authenticationService.CreateTokenAsync(sign);
             return ActionResultInstance(result);
         }
 
@@ -34,7 +34,7 @@ namespace CoreAuthServer.API.Controllers
         [HttpPost]
         public async Task<IActionResult> RevokeRefreshToken(RefreshTokenDto refreshTokenDto)
         {
-            Response<TokenDto> result = await _authenticationService.CreateByRefreshToken(refreshTokenDto.Token);
+            Response<NoDataDto> result = await _authenticationService.RevokeRefreshToken(refreshTokenDto.Token);
             return ActionResultInstance(result);
         }
 
