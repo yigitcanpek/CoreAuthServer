@@ -9,7 +9,9 @@ using CoreAuthServer.Data.DesignPattern;
 using CoreAuthServer.Data.Repositories;
 using CoreAuthServer.Service.Services;
 using CoreSharedLibary.Configurations;
+using CoreSharedLibary.Extensions;
 using CoreSharedLibary.Services;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Data.SqlClient;
@@ -27,43 +29,11 @@ builder.Services.AddScoped<IUserService,UserService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped(typeof(IServiceGeneric<,>), typeof(ServiceGeneric<,>));
-
-
-builder.Services.AddSwaggerGen(opt => {
-    opt.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "MyAPI", Version = "v1" });
-        opt.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
-        {
-            In = Microsoft.OpenApi.Models.ParameterLocation.Header,
-            Description = "Please enter token",
-            Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
-            BearerFormat = "jwt",
-            Scheme = "bearer"
-        });
-    opt.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
-    {
-        {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference
-                {
-                    Type=ReferenceType.SecurityScheme,
-                    Id="Bearer"
-                }
-            },
-            new string[]{}
-        }
-    });
-});
-
-
-
-
-
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"),sqlServerOptionsAction =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"), sqlServerOptionsAction =>
     {
         sqlServerOptionsAction.MigrationsAssembly("CoreAuthServer.Data");
     });
@@ -74,13 +44,14 @@ builder.Services.AddIdentity<UserApp, IdentityRole>(options =>
     options.User.RequireUniqueEmail = true;
     options.Password.RequireNonAlphanumeric = false;
 }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+
 builder.Services.Configure<CustomTokenOption>(builder.Configuration.GetSection("TokenOption"));
-builder.Services.Configure<Client>(builder.Configuration.GetSection("Clients"));
+builder.Services.Configure<List<Client>>(builder.Configuration.GetSection("Clients"));
 
 builder.Services.AddAuthentication(options =>
 {
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 }).AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
 {
     CustomTokenOption tokenOptions = builder.Configuration.GetSection("TokenOption").Get<CustomTokenOption>();
@@ -100,8 +71,25 @@ builder.Services.AddAuthentication(options =>
     };
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 });
-builder.Services.AddControllers();
+
+builder.Services.AddControllers().AddFluentValidation(options =>
+{
+    options.RegisterValidatorsFromAssemblyContaining<StartupBase>();
+});
+builder.Services.UseCustomValidationResponse();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -115,7 +103,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCustomExceptionHandler();
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
