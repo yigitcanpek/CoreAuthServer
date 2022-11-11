@@ -1,5 +1,6 @@
 ﻿using CoreAuthServer.Core.Repositories;
 using CoreAuthServer.Core.Services;
+using CoreAuthServer.Core.UnitOfWork;
 using CoreAuthServer.Data.DesignPattern;
 using CoreAuthServer.Service.Mapper;
 using CoreSharedLibary.DTO_s;
@@ -14,10 +15,10 @@ namespace CoreAuthServer.Service.Services
 {
     public class ServiceGeneric<TEntity, TDto> : IServiceGeneric<TEntity, TDto> where TEntity : class where TDto : class
     {
-        private readonly UnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IGenericRepository<TEntity> _genericRepository;
 
-        public ServiceGeneric(UnitOfWork unitOfWork,IGenericRepository<TEntity>genericRepository)
+        public ServiceGeneric(IUnitOfWork unitOfWork,IGenericRepository<TEntity>genericRepository)
         {
             _unitOfWork = unitOfWork;
             _genericRepository = genericRepository;

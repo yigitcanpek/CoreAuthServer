@@ -3,33 +3,34 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreAuthServer.API", "CoreAuthServer.API\CoreAuthServer.API.csproj", "{BDD0EFF6-810E-40D0-A347-0F7CC85F2683}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreAuthServer.API", "CoreAuthServer.API\CoreAuthServer.API.csproj", "{BDD0EFF6-810E-40D0-A347-0F7CC85F2683}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7B0B63A4-FCBC-4E65-8808-1850CEB55D89} = {7B0B63A4-FCBC-4E65-8808-1850CEB55D89}
+		{94551735-7579-4A68-851A-E87C22FA67F4} = {94551735-7579-4A68-851A-E87C22FA67F4}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreAuthServer.Core", "CoreAuthServer.Core\CoreAuthServer.Core.csproj", "{439C1C3F-FF62-462E-BFCD-76AA2A6DFF91}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreAuthServer.Data", "CoreAuthServer.Data\CoreAuthServer.Data.csproj", "{7B0B63A4-FCBC-4E65-8808-1850CEB55D89}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreAuthServer.Service", "CoreAuthServer.Service\CoreAuthServer.Service.csproj", "{7182A1BE-B82D-4617-9F41-52C797FCF9D0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniApp1.API", "MiniApp1.API\MiniApp1.API.csproj", "{C70C8678-771C-4594-B91B-D2EFEBABFBD6}"
 	ProjectSection(ProjectDependencies) = postProject
 		{94551735-7579-4A68-851A-E87C22FA67F4} = {94551735-7579-4A68-851A-E87C22FA67F4}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreAuthServer.Core", "CoreAuthServer.Core\CoreAuthServer.Core.csproj", "{439C1C3F-FF62-462E-BFCD-76AA2A6DFF91}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreAuthServer.Data", "CoreAuthServer.Data\CoreAuthServer.Data.csproj", "{7B0B63A4-FCBC-4E65-8808-1850CEB55D89}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreAuthServer.Service", "CoreAuthServer.Service\CoreAuthServer.Service.csproj", "{7182A1BE-B82D-4617-9F41-52C797FCF9D0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniApp1.API", "MiniApp1.API\MiniApp1.API.csproj", "{C70C8678-771C-4594-B91B-D2EFEBABFBD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniApp2.API", "MiniApp2.API\MiniApp2.API.csproj", "{2752C077-EF3A-4D87-9309-907F34D7A1DF}"
 	ProjectSection(ProjectDependencies) = postProject
 		{94551735-7579-4A68-851A-E87C22FA67F4} = {94551735-7579-4A68-851A-E87C22FA67F4}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniApp2.API", "MiniApp2.API\MiniApp2.API.csproj", "{2752C077-EF3A-4D87-9309-907F34D7A1DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniApp3.API", "MiniApp3.API\MiniApp3.API.csproj", "{53DD1567-9624-4DCD-BD78-DA9CAA7E3799}"
 	ProjectSection(ProjectDependencies) = postProject
 		{94551735-7579-4A68-851A-E87C22FA67F4} = {94551735-7579-4A68-851A-E87C22FA67F4}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniApp3.API", "MiniApp3.API\MiniApp3.API.csproj", "{53DD1567-9624-4DCD-BD78-DA9CAA7E3799}"
-	ProjectSection(ProjectDependencies) = postProject
-		{94551735-7579-4A68-851A-E87C22FA67F4} = {94551735-7579-4A68-851A-E87C22FA67F4}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreSharedLibary", "CoreSharedLibary\CoreSharedLibary.csproj", "{94551735-7579-4A68-851A-E87C22FA67F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreSharedLibary", "CoreSharedLibary\CoreSharedLibary.csproj", "{94551735-7579-4A68-851A-E87C22FA67F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -22,7 +22,7 @@ namespace CoreAuthServer.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateUser(CreateUserDto createUserDto)
         {
-            throw new CustomException("Veri tabanı ile ilgili bir hata meydana geldi");
+            
             return ActionResultInstance(await _userService.CreateUserAsync(createUserDto));
         }
 
